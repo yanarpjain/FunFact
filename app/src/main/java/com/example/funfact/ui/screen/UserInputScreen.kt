@@ -46,7 +46,9 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
         })
         Spacer(modifier = Modifier.size(20.dp))
 
-        TextComponent(textValue = "What do you like", textSize = 18.sp)
+        TextComponent(textValue = "What do you like ", textSize = 18.sp)
+
+
     }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.funfact.ui.screen
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,9 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
+import com.example.funfact.R
 import com.example.funfact.UserInputViewModel
 import com.example.funfact.data.UserDataUiEvents
+import com.example.funfact.ui.AnimalCard
 import com.example.funfact.ui.TextComponent
 import com.example.funfact.ui.TextFieldComponent
 import com.example.funfact.ui.TopBar
@@ -48,9 +50,21 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
 
         TextComponent(textValue = "What do you like ", textSize = 18.sp)
 
+      Row(modifier = Modifier.fillMaxWidth()) {
+        AnimalCard(
+            image = R.drawable.cat_logo, animalSelected = {
+            userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
+        },
+            selected = userInputViewModel.uiState.value.animalSelected == "Cat")
+          AnimalCard(image = R.drawable.dog_logo, animalSelected =  {
+              userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
+
+          }, selected = userInputViewModel.uiState.value.animalSelected == "Dog")
+
 
     }
     }
+}
 }
 
 @Preview
